@@ -1,0 +1,27 @@
+-- 计算一个二进制数中1的个数
+def one_cnt(x):
+    c=0
+    while x:
+        x=x&(x-1)
+        c+=1
+    return c
+    
+    
+-- 从一个数组中找出m个数的和为result
+def CalSum(nums,result,m):
+    nlen=len(nums)
+    bit=1<<nlen
+    i=0
+    while i<bit:
+        i+=1
+        sum=0
+        tmp=[]
+        if one_cnt(i) == m:
+            j=0
+            while j <=nlen:
+                if (i & 1 << j)!=0:
+                    sum+=nums[j]
+                    tmp.append(nums[j])
+                j=j+1
+            if sum==result:
+                print(tmp)

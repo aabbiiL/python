@@ -1,2 +1,2 @@
 # python
-记录一些python 机器学习的算法
+记录一些python算法和功能

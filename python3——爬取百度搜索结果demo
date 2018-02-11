@@ -1,0 +1,54 @@
+# coding=utf-8  
+import urllib   
+from urllib import request
+from urllib.request import urlopen,Request,HTTPError,URLError
+from urllib import error
+import re  
+import time  
+import random  
+import time  
+
+ 
+k=0  
+def search(key):  
+    global k  
+    url = 'http://m.baidu.com/s?word='+urllib.parse.quote(key)  
+#     print(url)   
+    user_agent = 'Mozilla/4.1 (compatible; MSIE 5.5; Windows NT)'      
+    values = {'wd' : '111' }      
+        
+    headers = { 'User-Agent' : user_agent }      
+  
+    data = urllib.parse.urlencode(values)
+    req1 = urllib.request.Request(url)  
+    # 发送请求同时传data表单  
+    #response = urllib2.urlopen(req)  #接受反馈的信息  
+    #the_page = response.read()  #读取反馈的内容  
+    #print the_page  
+  
+    #req = Request('http://bbs.csdn.net/callmewhy')   
+    try:    
+        
+        response = urlopen(req1)   
+        
+    except error.URLError as e:    
+  
+        if hasattr(e, 'code'):    
+        
+            print(key+' The server couldn\'t fulfill the request.')
+        
+            print('Reason: '+ e.reason ) 
+            search(key)  
+        elif hasattr(e, 'reason'):    
+        
+            print(key+' We failed to reach a server.')   
+        
+            print('Reason: '+ e.reason ) 
+            search(key)  
+        
+        
+    else:   
+		now = time.strftime("%H:%M:%S")
+        print(key+":"+now)
+for i in range(10000):
+    search(str(i))

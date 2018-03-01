@@ -65,43 +65,18 @@ os.mkdir('D:\\1\\test')
 
 
 yzm=''.join(map(str,map(int,pLabel)))
-header2={
-    'Accept':'application/json, text/javascript, */*; q=0.01',
-    'Accept-Encoding':'gzip, deflate',
-    'Accept-Language':'zh-CN,zh;q=0.9',
-    'Connection':'keep-alive',
-    'Content-Length':'74',
-    'Content-Type':'application/x-www-form-urlencoded',
-    'Host':'www.zhifuxt.com:8280',
-    'Origin':'http://www.zhifuxt.com:8280',
-    'Referer':'http://www.zhifuxt.com:8280/prm/',
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36',
-    'X-Requested-With':'XMLHttpRequest'
-}
-form={'agentId':'8180102895',
-'userId':'yixinjr',
-'userPwd':'111111',
+
+form={'agentId':'******',
+'userId':'******',
+'userPwd':'*****',
 'captcha':yzm,
 'reqType':'ajax'}
 
-html1=ss.post('http://www.zhifuxt.com:8280/prm/auth/login.do',data=form,headers=header2)
-result=ss.get ('http://www.zhifuxt.com:8280/prm/auth/mainPanel.do', cookies = html1.cookies)
-header3={
-'Accept':'application/json, text/javascript, */*; q=0.01',
-'Accept-Encoding':'gzip, deflate',
-'Accept-Language':'zh-CN,zh;q=0.9',
-'Connection':'keep-alive',
-'Content-Length':'27',
-'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
-'Host':'www.zhifuxt.com:8280',
-'Origin':'http://www.zhifuxt.com:8280',
-'Referer':'http://www.zhifuxt.com:8280/prm/auth/mainPanel.do',
-'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36',
-'X-Requested-With':'XMLHttpRequest',
-}
+html1=ss.post('logurl******',data=form)
+result=ss.get ('redirecturl**********', cookies = html1.cookies)
 form1={'_random':'0.10016563519140287'}
 
-result1=ss.get ('http://www.zhifuxt.com:8280/prm/mpomng/report/cday.do', cookies = result.cookies)
+result1=ss.get ('resulturl**********', cookies = result.cookies)
 
 result2=(result1.content).decode('utf8')
 
